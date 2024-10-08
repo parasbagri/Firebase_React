@@ -3,6 +3,7 @@ import { app } from "./firebase"; // import your firebase app
 import { getDatabase, ref, set } from "firebase/database";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"; // method for getting
 // User Authentication using firebase
+import SignupPage from "./pages/sign-up.component";
 
 // create Auth's instance
 const auth = getAuth(app);
@@ -16,8 +17,7 @@ function App() {
   };
   return (
     <div className="App">
-      <h3>Sangu Firebase App</h3>
-      <button onClick={signupUser}>Create User</button>
+      <SignupPage />
     </div>
   );
 }
