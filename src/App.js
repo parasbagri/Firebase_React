@@ -1,23 +1,23 @@
-import { app } from "./firebase";
 import "./App.css";
+import { app } from "./firebase"; // import your firebase app
 import { getDatabase, ref, set } from "firebase/database";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"; // method for getting
+// User Authentication using firebase
 
-const db = getDatabase(app);
+// create Auth's instance
+const auth = getAuth(app);
 function App() {
-  const putData = () => {
-    set(ref(db, "user/paras"), {
-      id: 1,
-      name: "Paras",
-      age: 24,
-      registance: "india",
-      imageUrl: " ",
-    });
+  const signupUser = () => {
+    createUserWithEmailAndPassword(
+      auth,
+      "parasbagri@gmail.com",
+      "paras@123"
+    ).then((value) => console.log(value));
   };
-
   return (
     <div className="App">
       <h3>Sangu Firebase App</h3>
-      <button onClick={putData}>Put Data</button>
+      <button onClick={signupUser}>Create User</button>
     </div>
   );
 }
